@@ -7,7 +7,7 @@ service:
 image:
   repository: phongvm/techtrends
   tag: latest
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 replicaCount: 1
 resources:
   requests:
