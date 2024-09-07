@@ -3,6 +3,7 @@ import sqlite3
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 import logging
+import sys
 
 db_count = 0
 # Function to get a database connection.
@@ -92,12 +93,12 @@ def metrics():
 # start the application on port 3111
 if __name__ == "__main__":
    logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(levelname)s:%(name)s: %(message)s',
-    datefmt='%d/%m/%Y, %H:%M:%S,',
+    level=logging.DEBUG,  # Set the logging level to DEBUG
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Format the log messages
     handlers=[
-        logging.FileHandler("app.log"),
-        logging.StreamHandler()
-    ])
+        logging.StreamHandler(sys.stdout),  # Log to STDOUT
+        logging.StreamHandler(sys.stderr)   # Log to STDERR
+    ]
+)
    
    app.run(host='0.0.0.0', port='3111')
